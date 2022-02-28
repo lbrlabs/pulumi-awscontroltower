@@ -5,10 +5,22 @@
 Pulumi.*.yaml
 sdk/nodejs/node_modules
 
+
 **/command-output/
 
 .idea/
 *.iml
 
 yarn.lock
-.DS_Store
+
+**/schema.go
+**/version.txt
+
+**/ci-scripts
+**/nuget
+
+**/node_modules
+
+dist/**
+**/.DS_store
+*.nupkg

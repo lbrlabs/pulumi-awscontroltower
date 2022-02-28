@@ -15,9 +15,9 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	awscontroltower "github.com/jaxxstorm/pulumi-awscontroltower/provider"
 	"github.com/jaxxstorm/pulumi-awscontroltower/provider/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
 func main() {

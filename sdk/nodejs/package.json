@@ -1,0 +1,29 @@
+{
+    "name": "@jaxxstorm/pulumi-awscontroltower",
+    "version": "${VERSION}",
+    "description": "A Pulumi package for creating and managing control tower accounts.",
+    "keywords": [
+        "pulumi",
+        "aws",
+        "controltower"
+    ],
+    "homepage": "https://leebriggs.co.uk/projects#pulumi-awscontroltower",
+    "repository": "https://github.com/jaxxstorm/pulumi-awscontroltower",
+    "license": "Apache-2.0",
+    "scripts": {
+        "build": "tsc",
+        "install": "node scripts/install-pulumi-plugin.js resource awscontroltower ${VERSION}"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.0.0"
+    },
+    "devDependencies": {
+        "@types/mime": "^2.0.0",
+        "@types/node": "^10.0.0",
+        "typescript": "^4.3.5"
+    },
+    "pulumi": {
+        "resource": true,
+        "pluginDownloadURL": "https://dl.briggs.work/pulumi/releases/plugins"
+    }
+}

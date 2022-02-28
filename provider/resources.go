@@ -17,23 +17,46 @@ package xyz
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
+	"unicode"
 
-	controlTowerShim "github.com/idealio/terraform-provider-controltower/shim"
+	controlTowerShim "github.com/idealo/terraform-provider-controltower/shim"
+	"github.com/jaxxstorm/pulumi-awscontroltower/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/jaxxstorm/pulumi-awscontroltower/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
 	// registries for nodejs and python:
-	mainPkg = "awscontroltower"
+	controlTowerPkg = "awscontroltower"
 	// modules:
-	mainMod = "index" // the xyz module
+	controlTowerMod = "index" // the xyz module
 )
+
+var namespaceMap = map[string]string{
+	controlTowerPkg: "AwsControlTower",
+}
+
+func makeMember(moduleTitle string, mem string) tokens.ModuleMember {
+	moduleName := strings.ToLower(moduleTitle)
+	namespaceMap[moduleName] = moduleTitle
+	fn := string(unicode.ToLower(rune(mem[0]))) + mem[1:]
+	token := moduleName + "/" + fn
+	return tokens.ModuleMember(controlTowerPkg + ":" + token + ":" + mem)
+}
+
+func makeType(mod string, typ string) tokens.Type {
+	return tokens.Type(makeMember(mod, typ))
+}
+
+func makeResource(mod string, res string) tokens.Type {
+	return makeType(mod, res)
+}
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
 // It should validate that the provider can be configured, and provide actionable errors in the case
@@ -50,14 +73,18 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "awscontroltower",
-		Description: "A Pulumi package for creating and managing xyz cloud resources.",
-		Keywords:    []string{"pulumi", "aws", "controltower"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/jaxxstorm/pulumi-awscontroltower",
-		Config:      map[string]*tfbridge.SchemaInfo{
+		P:                 p,
+		Name:              "awscontroltower",
+		Description:       "A Pulumi package for creating and managing control tower accounts.",
+		Keywords:          []string{"pulumi", "aws", "controltower"},
+		License:           "Apache-2.0",
+		Homepage:          "https://leebriggs.co.uk/projects#pulumi-awscontroltower",
+		Repository:        "https://github.com/jaxxstorm/pulumi-awscontroltower",
+		PluginDownloadURL: "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}",
+		GitHubOrg:         "idealo", // not in the terraform-providers repo
+		Publisher:         "Lee Briggs",
+		DisplayName:       "AWS Control Tower",
+		Config:            map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -68,25 +95,10 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: tfbridge.MakeResource(mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: tfbridge.MakeResource(mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
-			// 	},
-			// },
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"controltower_aws_account": {Tok: makeResource(controlTowerMod, "controlTowerAwsAccount")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainMod, "getAmi")},
-		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
@@ -96,6 +108,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
+			PackageName: "@jaxxstorm/pulumi-awscontroltower",
 			// See the documentation for tfbridge.OverlayInfo for how to lay out this
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
@@ -109,10 +122,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/jaxxstorm/pulumi-%[1]s/sdk/", controlTowerPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
-				mainPkg,
+				controlTowerPkg,
 			),
 			GenerateResourceContainerTypes: true,
 		},

@@ -1,0 +1,5 @@
+{
+  "resource": true,
+  "name": "awscontroltower",
+  "server": "https://dl.briggs.work/pulumi/releases/plugins"
+}
