@@ -1,5 +1,5 @@
 {
   "resource": true,
   "name": "awscontroltower",
-  "server": "https://dl.briggs.work/pulumi/releases/plugins"
+  "server": "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}"
 }

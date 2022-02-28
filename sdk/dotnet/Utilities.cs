@@ -58,7 +58,7 @@ namespace Pulumi.Awscontroltower
         {
             InvokeOptions dst = src ?? new InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://dl.briggs.work/pulumi/releases/plugins";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}";
             return dst;
         }
 

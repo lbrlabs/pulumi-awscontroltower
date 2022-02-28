@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'awscontroltower', PLUGIN_VERSION, '--server', 'https://dl.briggs.work/pulumi/releases/plugins'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'awscontroltower', PLUGIN_VERSION, '--server', 'https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""

@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`awscontroltower` Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower).",
     "repository": "https://github.com/jaxxstorm/pulumi-awscontroltower",
-    "pluginDownloadURL": "https://dl.briggs.work/pulumi/releases/plugins",
+    "pluginDownloadURL": "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}",
     "publisher": "Lee Briggs",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
