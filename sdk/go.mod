@@ -1,5 +1,5 @@
-module github.com/pulumi/pulumi-xyz/sdk
+module github.com/lbrlabs/pulumi-awscontroltwoer/sdk
 
-go 1.16
+go 1.19
 
-require github.com/pulumi/pulumi/sdk/v3 v3.14.0
+require github.com/pulumi/pulumi/sdk/v3 v3.40.0

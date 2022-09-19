@@ -1,18 +1,4 @@
-// Copyright 2016-2018, Pulumi Corporation.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-package xyz
+package awscontroltower
 
 import (
 	"fmt"
@@ -21,7 +7,7 @@ import (
 	"unicode"
 
 	controlTowerShim "github.com/idealo/terraform-provider-controltower/shim"
-	"github.com/jaxxstorm/pulumi-awscontroltower/provider/pkg/version"
+	"github.com/lbrlabs/pulumi-awscontroltower/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -76,13 +62,13 @@ func Provider() tfbridge.ProviderInfo {
 		P:                 p,
 		Name:              "awscontroltower",
 		Description:       "A Pulumi package for creating and managing control tower accounts.",
-		Keywords:          []string{"pulumi", "aws", "controltower"},
+		Keywords:          []string{"pulumi", "aws", "controltower", "lbrlabs"},
 		License:           "Apache-2.0",
 		Homepage:          "https://leebriggs.co.uk/projects#pulumi-awscontroltower",
 		Repository:        "https://github.com/jaxxstorm/pulumi-awscontroltower",
 		PluginDownloadURL: "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}",
 		GitHubOrg:         "idealo", // not in the terraform-providers repo
-		Publisher:         "Lee Briggs",
+		Publisher:         "lbrlabs",
 		DisplayName:       "AWS Control Tower",
 		Config:            map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
@@ -108,7 +94,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			PackageName: "@jaxxstorm/pulumi-awscontroltower",
+			PackageName: "@lbrlabs/pulumi-awscontroltower",
 			// See the documentation for tfbridge.OverlayInfo for how to lay out this
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
@@ -119,10 +105,11 @@ func Provider() tfbridge.ProviderInfo {
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
+			PackageName: "lbrlabs_pulumi_aws_controltower",
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/jaxxstorm/pulumi-%[1]s/sdk/", controlTowerPkg),
+				fmt.Sprintf("github.com/lbrlabs/pulumi-%[1]s/sdk/", controlTowerPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				controlTowerPkg,
@@ -133,6 +120,7 @@ func Provider() tfbridge.ProviderInfo {
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
+			RootNamespace: "Lbrlabs.PulumiPackage",
 		},
 	}
 
