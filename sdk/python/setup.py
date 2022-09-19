@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'awscontroltower', PLUGIN_VERSION, '--server', 'https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'awscontroltower', PLUGIN_VERSION, '--server', 'github://api.github.com/lbrlabs'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""
@@ -48,7 +48,7 @@ setup(name='lbrlabs_pulumi_aws_controltower',
       keywords='pulumi aws controltower lbrlabs',
       url='https://leebriggs.co.uk/projects#pulumi-awscontroltower',
       project_urls={
-          'Repository': 'https://github.com/jaxxstorm/pulumi-awscontroltower'
+          'Repository': 'https://github.com/lbrlabs/pulumi-awscontroltower'
       },
       license='Apache-2.0',
       packages=find_packages(),

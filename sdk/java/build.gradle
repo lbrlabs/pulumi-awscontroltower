@@ -90,12 +90,12 @@ publishing {
                 packaging = "jar"
                 description = ""
 
-                url = "https://github.com/jaxxstorm/pulumi-awscontroltower"
+                url = "https://github.com/lbrlabs/pulumi-awscontroltower"
 
                 scm {
-                    connection = "git@github.com/jaxxstorm/pulumi-awscontroltower.git"
-                    developerConnection = "git@github.com/jaxxstorm/pulumi-awscontroltower.git"
-                    url = "https://github.com/jaxxstorm/pulumi-awscontroltower"
+                    connection = "git@github.com/lbrlabs/pulumi-awscontroltower.git"
+                    developerConnection = "git@github.com/lbrlabs/pulumi-awscontroltower.git"
+                    url = "https://github.com/lbrlabs/pulumi-awscontroltower"
                 }
 
                 licenses {

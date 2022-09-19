@@ -11,8 +11,8 @@
     "homepage": "https://leebriggs.co.uk/projects#pulumi-awscontroltower",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`awscontroltower` Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower).",
-    "repository": "https://github.com/jaxxstorm/pulumi-awscontroltower",
-    "pluginDownloadURL": "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}",
+    "repository": "https://github.com/lbrlabs/pulumi-awscontroltower",
+    "pluginDownloadURL": "github://api.github.com/lbrlabs",
     "publisher": "lbrlabs",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -43,13 +43,13 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing control tower accounts.",
             "packageName": "@lbrlabs/pulumi-awscontroltower",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-awscontroltower` repo](https://github.com/jaxxstorm/pulumi-awscontroltower/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-awscontroltower` repo](https://github.com/idealo/terraform-provider-awscontroltower/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-awscontroltower` repo](https://github.com/lbrlabs/pulumi-awscontroltower/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-awscontroltower` repo](https://github.com/idealo/terraform-provider-awscontroltower/issues).",
             "typescriptVersion": ""
         },
         "python": {
             "compatibility": "tfbridge20",
             "packageName": "lbrlabs_pulumi_aws_controltower",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-awscontroltower` repo](https://github.com/jaxxstorm/pulumi-awscontroltower/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-awscontroltower` repo](https://github.com/idealo/terraform-provider-awscontroltower/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-awscontroltower` repo](https://github.com/lbrlabs/pulumi-awscontroltower/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-awscontroltower` repo](https://github.com/idealo/terraform-provider-awscontroltower/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }

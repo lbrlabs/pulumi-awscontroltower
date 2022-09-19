@@ -53,7 +53,7 @@ namespace Lbrlabs.PulumiPackage.Awscontroltower
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "github://api.github.com/lbrlabs";
             return dst;
         }
 

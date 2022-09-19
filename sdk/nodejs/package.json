@@ -9,7 +9,7 @@
         "lbrlabs"
     ],
     "homepage": "https://leebriggs.co.uk/projects#pulumi-awscontroltower",
-    "repository": "https://github.com/jaxxstorm/pulumi-awscontroltower",
+    "repository": "https://github.com/lbrlabs/pulumi-awscontroltower",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc",
@@ -26,6 +26,6 @@
     "pulumi": {
         "resource": true,
         "name": "awscontroltower",
-        "server": "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}"
+        "server": "github://api.github.com/lbrlabs"
     }
 }

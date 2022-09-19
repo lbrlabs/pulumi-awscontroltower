@@ -65,8 +65,8 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:          []string{"pulumi", "aws", "controltower", "lbrlabs"},
 		License:           "Apache-2.0",
 		Homepage:          "https://leebriggs.co.uk/projects#pulumi-awscontroltower",
-		Repository:        "https://github.com/jaxxstorm/pulumi-awscontroltower",
-		PluginDownloadURL: "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}",
+		Repository:        "https://github.com/lbrlabs/pulumi-awscontroltower",
+		PluginDownloadURL: "github://api.github.com/lbrlabs",
 		GitHubOrg:         "idealo", // not in the terraform-providers repo
 		Publisher:         "lbrlabs",
 		DisplayName:       "AWS Control Tower",
