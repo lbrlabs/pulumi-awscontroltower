@@ -1,11 +1,12 @@
 {
-    "name": "@jaxxstorm/pulumi-awscontroltower",
+    "name": "@lbrlabs/pulumi-awscontroltower",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing control tower accounts.",
     "keywords": [
         "pulumi",
         "aws",
-        "controltower"
+        "controltower",
+        "lbrlabs"
     ],
     "homepage": "https://leebriggs.co.uk/projects#pulumi-awscontroltower",
     "repository": "https://github.com/jaxxstorm/pulumi-awscontroltower",
@@ -24,6 +25,7 @@
     },
     "pulumi": {
         "resource": true,
-        "pluginDownloadURL": "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}"
+        "name": "awscontroltower",
+        "server": "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}"
     }
 }

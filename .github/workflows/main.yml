@@ -9,11 +9,8 @@ env:
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PULUMI_TEST_OWNER: "lbrlabs"
-  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
   PYPI_USERNAME: "__token__"
-  SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
-  SCW_DEFAULT_PROJECT_ID: ${{ secrets.SCW_DEFAULT_PROJECT_ID }}
-  SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
   TRAVIS_OS_NAME: linux
 jobs:
   build_sdk:
@@ -85,7 +82,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.19.x
         language:
         - nodejs
         - python
@@ -156,7 +153,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.19.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -194,7 +191,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.19.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -269,7 +266,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.19.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -346,7 +343,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.19.x
         language:
         - nodejs
         - python

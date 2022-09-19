@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Awscontroltower
+namespace Lbrlabs.PulumiPackage.Awscontroltower
 {
     public static class Config
     {
@@ -43,11 +43,11 @@ namespace Pulumi.Awscontroltower
             set => _accessKey.Set(value);
         }
 
-        private static readonly __Value<Pulumi.Awscontroltower.Config.Types.AssumeRole?> _assumeRole = new __Value<Pulumi.Awscontroltower.Config.Types.AssumeRole?>(() => __config.GetObject<Pulumi.Awscontroltower.Config.Types.AssumeRole>("assumeRole"));
+        private static readonly __Value<Lbrlabs.PulumiPackage.Awscontroltower.Config.Types.AssumeRole?> _assumeRole = new __Value<Lbrlabs.PulumiPackage.Awscontroltower.Config.Types.AssumeRole?>(() => __config.GetObject<Lbrlabs.PulumiPackage.Awscontroltower.Config.Types.AssumeRole>("assumeRole"));
         /// <summary>
         /// Settings for making use of the AWS Assume Role functionality.
         /// </summary>
-        public static Pulumi.Awscontroltower.Config.Types.AssumeRole? AssumeRole
+        public static Lbrlabs.PulumiPackage.Awscontroltower.Config.Types.AssumeRole? AssumeRole
         {
             get => _assumeRole.Get();
             set => _assumeRole.Set(value);

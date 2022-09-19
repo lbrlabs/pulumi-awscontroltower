@@ -5,16 +5,55 @@
     "keywords": [
         "pulumi",
         "aws",
-        "controltower"
+        "controltower",
+        "lbrlabs"
     ],
     "homepage": "https://leebriggs.co.uk/projects#pulumi-awscontroltower",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`awscontroltower` Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower).",
     "repository": "https://github.com/jaxxstorm/pulumi-awscontroltower",
     "pluginDownloadURL": "https://github.com/jaxxstorm/pulumi-awscontroltower/releases/download/${VERSION}",
-    "publisher": "Lee Briggs",
+    "publisher": "lbrlabs",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "rootNamespace": "Lbrlabs.PulumiPackage"
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/lbrlabs/pulumi-awscontroltower/sdk/go/awscontroltower"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing control tower accounts.",
+            "packageName": "@lbrlabs/pulumi-awscontroltower",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-awscontroltower` repo](https://github.com/jaxxstorm/pulumi-awscontroltower/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-awscontroltower` repo](https://github.com/idealo/terraform-provider-awscontroltower/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "packageName": "lbrlabs_pulumi_aws_controltower",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-awscontroltower` repo](https://github.com/jaxxstorm/pulumi-awscontroltower/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-awscontroltower` repo](https://github.com/idealo/terraform-provider-awscontroltower/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
     },
     "config": {
         "variables": {
@@ -327,6 +366,10 @@
                     "type": "string",
                     "description": "ID of the AWS account.\n"
                 },
+                "closeAccountOnDelete": {
+                    "type": "boolean",
+                    "description": "If enabled, this will close the AWS account on resource deletion, beginning the 90-day suspension period. Otherwise, the\naccount will just be unenrolled from Control Tower.\n"
+                },
                 "email": {
                     "type": "string",
                     "description": "Root email of the account.\n"
@@ -338,6 +381,14 @@
                 "organizationalUnit": {
                     "type": "string",
                     "description": "Name of the Organizational Unit under which the account resides.\n"
+                },
+                "organizationalUnitIdOnDelete": {
+                    "type": "string",
+                    "description": "ID of the Organizational Unit to which the account should be moved when the resource is deleted. If no value is\nprovided, the account will not be moved.\n"
+                },
+                "pathId": {
+                    "type": "string",
+                    "description": "Name of the path identifier of the product. This value is optional if the product has a default path, and required if\nthe product has more than one path. To list the paths for a product, use ListLaunchPaths.\n"
                 },
                 "provisionedProductName": {
                     "type": "string",
@@ -360,25 +411,42 @@
                 "email",
                 "name",
                 "organizationalUnit",
+                "pathId",
                 "provisionedProductName",
                 "sso"
             ],
             "inputProperties": {
+                "closeAccountOnDelete": {
+                    "type": "boolean",
+                    "description": "If enabled, this will close the AWS account on resource deletion, beginning the 90-day suspension period. Otherwise, the\naccount will just be unenrolled from Control Tower.\n"
+                },
                 "email": {
                     "type": "string",
-                    "description": "Root email of the account.\n"
+                    "description": "Root email of the account.\n",
+                    "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the account.\n"
+                    "description": "Name of the account.\n",
+                    "willReplaceOnChanges": true
                 },
                 "organizationalUnit": {
                     "type": "string",
                     "description": "Name of the Organizational Unit under which the account resides.\n"
                 },
+                "organizationalUnitIdOnDelete": {
+                    "type": "string",
+                    "description": "ID of the Organizational Unit to which the account should be moved when the resource is deleted. If no value is\nprovided, the account will not be moved.\n"
+                },
+                "pathId": {
+                    "type": "string",
+                    "description": "Name of the path identifier of the product. This value is optional if the product has a default path, and required if\nthe product has more than one path. To list the paths for a product, use ListLaunchPaths.\n",
+                    "willReplaceOnChanges": true
+                },
                 "provisionedProductName": {
                     "type": "string",
-                    "description": "Name of the service catalog product that is provisioned. Defaults to a slugified version of the account name.\n"
+                    "description": "Name of the service catalog product that is provisioned. Defaults to a slugified version of the account name.\n",
+                    "willReplaceOnChanges": true
                 },
                 "sso": {
                     "$ref": "#/types/awscontroltower:index/controlTowerAwsAccountSso:controlTowerAwsAccountSso",
@@ -404,21 +472,37 @@
                         "type": "string",
                         "description": "ID of the AWS account.\n"
                     },
+                    "closeAccountOnDelete": {
+                        "type": "boolean",
+                        "description": "If enabled, this will close the AWS account on resource deletion, beginning the 90-day suspension period. Otherwise, the\naccount will just be unenrolled from Control Tower.\n"
+                    },
                     "email": {
                         "type": "string",
-                        "description": "Root email of the account.\n"
+                        "description": "Root email of the account.\n",
+                        "willReplaceOnChanges": true
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the account.\n"
+                        "description": "Name of the account.\n",
+                        "willReplaceOnChanges": true
                     },
                     "organizationalUnit": {
                         "type": "string",
                         "description": "Name of the Organizational Unit under which the account resides.\n"
                     },
+                    "organizationalUnitIdOnDelete": {
+                        "type": "string",
+                        "description": "ID of the Organizational Unit to which the account should be moved when the resource is deleted. If no value is\nprovided, the account will not be moved.\n"
+                    },
+                    "pathId": {
+                        "type": "string",
+                        "description": "Name of the path identifier of the product. This value is optional if the product has a default path, and required if\nthe product has more than one path. To list the paths for a product, use ListLaunchPaths.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "provisionedProductName": {
                         "type": "string",
-                        "description": "Name of the service catalog product that is provisioned. Defaults to a slugified version of the account name.\n"
+                        "description": "Name of the service catalog product that is provisioned. Defaults to a slugified version of the account name.\n",
+                        "willReplaceOnChanges": true
                     },
                     "sso": {
                         "$ref": "#/types/awscontroltower:index/controlTowerAwsAccountSso:controlTowerAwsAccountSso",
@@ -433,42 +517,6 @@
                     }
                 },
                 "type": "object"
-            }
-        }
-    },
-    "language": {
-        "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": null,
-            "packageReferences": {
-                "Pulumi": "3.*"
-            }
-        },
-        "go": {
-            "generateExtraInputTypes": true,
-            "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/jaxxstorm/pulumi-awscontroltower/sdk/go/awscontroltower"
-        },
-        "nodejs": {
-            "compatibility": "tfbridge20",
-            "dependencies": {
-                "@pulumi/pulumi": "^3.0.0"
-            },
-            "devDependencies": {
-                "@types/mime": "^2.0.0",
-                "@types/node": "^10.0.0"
-            },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing control tower accounts.",
-            "packageName": "@jaxxstorm/pulumi-awscontroltower",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-awscontroltower` repo](https://github.com/pulumi/pulumi-awscontroltower/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`idealo/terraform-provider-awscontroltower` repo](https://github.com/idealo/terraform-provider-awscontroltower/issues).",
-            "typescriptVersion": ""
-        },
-        "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/idealo/terraform-provider-awscontroltower)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-awscontroltower` repo](https://github.com/pulumi/pulumi-awscontroltower/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`idealo/terraform-provider-awscontroltower` repo](https://github.com/idealo/terraform-provider-awscontroltower/issues).",
-            "requires": {
-                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
         }
     }

@@ -7,5 +7,6 @@ import (
 )
 
 func NewProvider() *schema.Provider {
-	return provider.New(version.Version)()
+	prov := provider.New(version.Version)()
+	return prov
 }

@@ -38,6 +38,11 @@ export class ControlTowerAwsAccount extends pulumi.CustomResource {
      */
     public /*out*/ readonly accountId!: pulumi.Output<string>;
     /**
+     * If enabled, this will close the AWS account on resource deletion, beginning the 90-day suspension period. Otherwise, the
+     * account will just be unenrolled from Control Tower.
+     */
+    public readonly closeAccountOnDelete!: pulumi.Output<boolean | undefined>;
+    /**
      * Root email of the account.
      */
     public readonly email!: pulumi.Output<string>;
@@ -49,6 +54,16 @@ export class ControlTowerAwsAccount extends pulumi.CustomResource {
      * Name of the Organizational Unit under which the account resides.
      */
     public readonly organizationalUnit!: pulumi.Output<string>;
+    /**
+     * ID of the Organizational Unit to which the account should be moved when the resource is deleted. If no value is
+     * provided, the account will not be moved.
+     */
+    public readonly organizationalUnitIdOnDelete!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the path identifier of the product. This value is optional if the product has a default path, and required if
+     * the product has more than one path. To list the paths for a product, use ListLaunchPaths.
+     */
+    public readonly pathId!: pulumi.Output<string>;
     /**
      * Name of the service catalog product that is provisioned. Defaults to a slugified version of the account name.
      */
@@ -76,9 +91,12 @@ export class ControlTowerAwsAccount extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ControlTowerAwsAccountState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["closeAccountOnDelete"] = state ? state.closeAccountOnDelete : undefined;
             resourceInputs["email"] = state ? state.email : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["organizationalUnit"] = state ? state.organizationalUnit : undefined;
+            resourceInputs["organizationalUnitIdOnDelete"] = state ? state.organizationalUnitIdOnDelete : undefined;
+            resourceInputs["pathId"] = state ? state.pathId : undefined;
             resourceInputs["provisionedProductName"] = state ? state.provisionedProductName : undefined;
             resourceInputs["sso"] = state ? state.sso : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -93,9 +111,12 @@ export class ControlTowerAwsAccount extends pulumi.CustomResource {
             if ((!args || args.sso === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sso'");
             }
+            resourceInputs["closeAccountOnDelete"] = args ? args.closeAccountOnDelete : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationalUnit"] = args ? args.organizationalUnit : undefined;
+            resourceInputs["organizationalUnitIdOnDelete"] = args ? args.organizationalUnitIdOnDelete : undefined;
+            resourceInputs["pathId"] = args ? args.pathId : undefined;
             resourceInputs["provisionedProductName"] = args ? args.provisionedProductName : undefined;
             resourceInputs["sso"] = args ? args.sso : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -115,6 +136,11 @@ export interface ControlTowerAwsAccountState {
      */
     accountId?: pulumi.Input<string>;
     /**
+     * If enabled, this will close the AWS account on resource deletion, beginning the 90-day suspension period. Otherwise, the
+     * account will just be unenrolled from Control Tower.
+     */
+    closeAccountOnDelete?: pulumi.Input<boolean>;
+    /**
      * Root email of the account.
      */
     email?: pulumi.Input<string>;
@@ -126,6 +152,16 @@ export interface ControlTowerAwsAccountState {
      * Name of the Organizational Unit under which the account resides.
      */
     organizationalUnit?: pulumi.Input<string>;
+    /**
+     * ID of the Organizational Unit to which the account should be moved when the resource is deleted. If no value is
+     * provided, the account will not be moved.
+     */
+    organizationalUnitIdOnDelete?: pulumi.Input<string>;
+    /**
+     * Name of the path identifier of the product. This value is optional if the product has a default path, and required if
+     * the product has more than one path. To list the paths for a product, use ListLaunchPaths.
+     */
+    pathId?: pulumi.Input<string>;
     /**
      * Name of the service catalog product that is provisioned. Defaults to a slugified version of the account name.
      */
@@ -145,6 +181,11 @@ export interface ControlTowerAwsAccountState {
  */
 export interface ControlTowerAwsAccountArgs {
     /**
+     * If enabled, this will close the AWS account on resource deletion, beginning the 90-day suspension period. Otherwise, the
+     * account will just be unenrolled from Control Tower.
+     */
+    closeAccountOnDelete?: pulumi.Input<boolean>;
+    /**
      * Root email of the account.
      */
     email: pulumi.Input<string>;
@@ -156,6 +197,16 @@ export interface ControlTowerAwsAccountArgs {
      * Name of the Organizational Unit under which the account resides.
      */
     organizationalUnit: pulumi.Input<string>;
+    /**
+     * ID of the Organizational Unit to which the account should be moved when the resource is deleted. If no value is
+     * provided, the account will not be moved.
+     */
+    organizationalUnitIdOnDelete?: pulumi.Input<string>;
+    /**
+     * Name of the path identifier of the product. This value is optional if the product has a default path, and required if
+     * the product has more than one path. To list the paths for a product, use ListLaunchPaths.
+     */
+    pathId?: pulumi.Input<string>;
     /**
      * Name of the service catalog product that is provisioned. Defaults to a slugified version of the account name.
      */

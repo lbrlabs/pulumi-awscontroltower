@@ -37,7 +37,7 @@ def readme():
         return "awscontroltower Pulumi Package - Development Version"
 
 
-setup(name='pulumi_awscontroltower',
+setup(name='lbrlabs_pulumi_aws_controltower',
       version=VERSION,
       description="A Pulumi package for creating and managing control tower accounts.",
       long_description=readme(),
@@ -45,7 +45,7 @@ setup(name='pulumi_awscontroltower',
       cmdclass={
           'install': InstallPluginCommand,
       },
-      keywords='pulumi aws controltower',
+      keywords='pulumi aws controltower lbrlabs',
       url='https://leebriggs.co.uk/projects#pulumi-awscontroltower',
       project_urls={
           'Repository': 'https://github.com/jaxxstorm/pulumi-awscontroltower'
@@ -53,7 +53,7 @@ setup(name='pulumi_awscontroltower',
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'pulumi_awscontroltower': [
+          'lbrlabs_pulumi_aws_controltower': [
               'py.typed',
               'pulumi-plugin.json',
           ]
