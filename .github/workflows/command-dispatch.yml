@@ -18,14 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
-    - uses: peter-evans/slash-command-dispatch@v2
+      uses: actions/checkout@v3
+    - uses: peter-evans/slash-command-dispatch@v3
       with:
         commands: run-acceptance-tests
         issue-type: pull-request
         permission: write
         reaction-token: ${{ secrets.GITHUB_TOKEN }}
-        repository: jaxxstorm/pulumi-scaleway
+        repository: lbrlabs/pulumi-awscontroltower
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
     strategy: {}
 "on":
