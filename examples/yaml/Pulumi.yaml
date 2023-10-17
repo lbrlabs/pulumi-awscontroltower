@@ -1,0 +1,17 @@
+name: awscontroltower-yaml
+runtime: yaml
+description: A minimal Pulumi YAML program
+resources:
+  account:
+    type: awscontroltower:controlTowerAwsAccount
+    properties:
+      name: "Pulumi Example"
+      email: "pulumi-example@lbrlabs.com"
+      organizationalUnit: "Testing"
+      organizationalUnitIdOnDelete: "ou-p8qa-7ts76j9l"
+      closeAccountOnDelete: true
+      sso:
+        firstName: "Lee"
+        lastName: "Briggs"
+        email: "lee@brig.gs"
+
