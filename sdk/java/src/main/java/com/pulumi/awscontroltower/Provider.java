@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * variable, or via a shared credentials file if `profile` is specified.
      * 
      */
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKey;
 
     /**
@@ -42,7 +42,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * This is the AWS profile name as set in the shared credentials file.
      * 
      */
-    @Export(name="profile", type=String.class, parameters={})
+    @Export(name="profile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> profile;
 
     /**
@@ -57,7 +57,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * variables, or via a shared credentials file if `profile` is specified.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -73,7 +73,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * variable, or via a shared credentials file if `profile` is specified.
      * 
      */
-    @Export(name="secretKey", type=String.class, parameters={})
+    @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretKey;
 
     /**
@@ -89,7 +89,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * will be used.
      * 
      */
-    @Export(name="sharedCredentialsFile", type=String.class, parameters={})
+    @Export(name="sharedCredentialsFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sharedCredentialsFile;
 
     /**
@@ -106,7 +106,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * MFA code used to get temporary credentials. It can also be sourced from the `AWS_SESSION_TOKEN` environment variable.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**

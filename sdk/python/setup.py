@@ -9,26 +9,6 @@ from subprocess import check_call
 
 
 VERSION = "0.0.0"
-PLUGIN_VERSION = "0.0.0"
-
-class InstallPluginCommand(install):
-    def run(self):
-        install.run(self)
-        try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'awscontroltower', PLUGIN_VERSION, '--server', 'github://api.github.com/lbrlabs'])
-        except OSError as error:
-            if error.errno == errno.ENOENT:
-                print(f"""
-                There was an error installing the awscontroltower resource provider plugin.
-                It looks like `pulumi` is not installed on your system.
-                Please visit https://pulumi.com/ to install the Pulumi CLI.
-                You may try manually installing the plugin by running
-                `pulumi plugin install resource awscontroltower {PLUGIN_VERSION}`
-                """)
-            else:
-                raise
-
-
 def readme():
     try:
         with open('README.md', encoding='utf-8') as f:
@@ -38,13 +18,11 @@ def readme():
 
 
 setup(name='lbrlabs_pulumi_aws_controltower',
+      python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing control tower accounts.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      cmdclass={
-          'install': InstallPluginCommand,
-      },
       keywords='pulumi aws controltower lbrlabs',
       url='https://leebriggs.co.uk/projects#pulumi-awscontroltower',
       project_urls={

@@ -7,8 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/lbrlabs/pulumi-awscontroltower/sdk/go/awscontroltower/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ControlTowerAwsAccount struct {
@@ -55,7 +57,7 @@ func NewControlTowerAwsAccount(ctx *pulumi.Context,
 	if args.Sso == nil {
 		return nil, errors.New("invalid value for required argument 'Sso'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ControlTowerAwsAccount
 	err := ctx.RegisterResource("awscontroltower:index/controlTowerAwsAccount:controlTowerAwsAccount", name, args, &resource, opts...)
 	if err != nil {
@@ -205,6 +207,12 @@ func (i *ControlTowerAwsAccount) ToControlTowerAwsAccountOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ControlTowerAwsAccountOutput)
 }
 
+func (i *ControlTowerAwsAccount) ToOutput(ctx context.Context) pulumix.Output[*ControlTowerAwsAccount] {
+	return pulumix.Output[*ControlTowerAwsAccount]{
+		OutputState: i.ToControlTowerAwsAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ControlTowerAwsAccountArrayInput is an input type that accepts ControlTowerAwsAccountArray and ControlTowerAwsAccountArrayOutput values.
 // You can construct a concrete instance of `ControlTowerAwsAccountArrayInput` via:
 //
@@ -228,6 +236,12 @@ func (i ControlTowerAwsAccountArray) ToControlTowerAwsAccountArrayOutput() Contr
 
 func (i ControlTowerAwsAccountArray) ToControlTowerAwsAccountArrayOutputWithContext(ctx context.Context) ControlTowerAwsAccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ControlTowerAwsAccountArrayOutput)
+}
+
+func (i ControlTowerAwsAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*ControlTowerAwsAccount] {
+	return pulumix.Output[[]*ControlTowerAwsAccount]{
+		OutputState: i.ToControlTowerAwsAccountArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ControlTowerAwsAccountMapInput is an input type that accepts ControlTowerAwsAccountMap and ControlTowerAwsAccountMapOutput values.
@@ -255,6 +269,12 @@ func (i ControlTowerAwsAccountMap) ToControlTowerAwsAccountMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ControlTowerAwsAccountMapOutput)
 }
 
+func (i ControlTowerAwsAccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ControlTowerAwsAccount] {
+	return pulumix.Output[map[string]*ControlTowerAwsAccount]{
+		OutputState: i.ToControlTowerAwsAccountMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ControlTowerAwsAccountOutput struct{ *pulumi.OutputState }
 
 func (ControlTowerAwsAccountOutput) ElementType() reflect.Type {
@@ -267,6 +287,12 @@ func (o ControlTowerAwsAccountOutput) ToControlTowerAwsAccountOutput() ControlTo
 
 func (o ControlTowerAwsAccountOutput) ToControlTowerAwsAccountOutputWithContext(ctx context.Context) ControlTowerAwsAccountOutput {
 	return o
+}
+
+func (o ControlTowerAwsAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*ControlTowerAwsAccount] {
+	return pulumix.Output[*ControlTowerAwsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the AWS account.
@@ -336,6 +362,12 @@ func (o ControlTowerAwsAccountArrayOutput) ToControlTowerAwsAccountArrayOutputWi
 	return o
 }
 
+func (o ControlTowerAwsAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ControlTowerAwsAccount] {
+	return pulumix.Output[[]*ControlTowerAwsAccount]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ControlTowerAwsAccountArrayOutput) Index(i pulumi.IntInput) ControlTowerAwsAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ControlTowerAwsAccount {
 		return vs[0].([]*ControlTowerAwsAccount)[vs[1].(int)]
@@ -354,6 +386,12 @@ func (o ControlTowerAwsAccountMapOutput) ToControlTowerAwsAccountMapOutput() Con
 
 func (o ControlTowerAwsAccountMapOutput) ToControlTowerAwsAccountMapOutputWithContext(ctx context.Context) ControlTowerAwsAccountMapOutput {
 	return o
+}
+
+func (o ControlTowerAwsAccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ControlTowerAwsAccount] {
+	return pulumix.Output[map[string]*ControlTowerAwsAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ControlTowerAwsAccountMapOutput) MapIndex(k pulumi.StringInput) ControlTowerAwsAccountOutput {

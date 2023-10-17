@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,21 +40,58 @@ class ControlTowerAwsAccountArgs:
         :param pulumi.Input[str] provisioned_product_name: Name of the service catalog product that is provisioned. Defaults to a slugified version of the account name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags for the account.
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "organizational_unit", organizational_unit)
-        pulumi.set(__self__, "sso", sso)
+        ControlTowerAwsAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            organizational_unit=organizational_unit,
+            sso=sso,
+            close_account_on_delete=close_account_on_delete,
+            name=name,
+            organizational_unit_id_on_delete=organizational_unit_id_on_delete,
+            path_id=path_id,
+            provisioned_product_name=provisioned_product_name,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: pulumi.Input[str],
+             organizational_unit: pulumi.Input[str],
+             sso: pulumi.Input['ControlTowerAwsAccountSsoArgs'],
+             close_account_on_delete: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             organizational_unit_id_on_delete: Optional[pulumi.Input[str]] = None,
+             path_id: Optional[pulumi.Input[str]] = None,
+             provisioned_product_name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'organizationalUnit' in kwargs:
+            organizational_unit = kwargs['organizationalUnit']
+        if 'closeAccountOnDelete' in kwargs:
+            close_account_on_delete = kwargs['closeAccountOnDelete']
+        if 'organizationalUnitIdOnDelete' in kwargs:
+            organizational_unit_id_on_delete = kwargs['organizationalUnitIdOnDelete']
+        if 'pathId' in kwargs:
+            path_id = kwargs['pathId']
+        if 'provisionedProductName' in kwargs:
+            provisioned_product_name = kwargs['provisionedProductName']
+
+        _setter("email", email)
+        _setter("organizational_unit", organizational_unit)
+        _setter("sso", sso)
         if close_account_on_delete is not None:
-            pulumi.set(__self__, "close_account_on_delete", close_account_on_delete)
+            _setter("close_account_on_delete", close_account_on_delete)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if organizational_unit_id_on_delete is not None:
-            pulumi.set(__self__, "organizational_unit_id_on_delete", organizational_unit_id_on_delete)
+            _setter("organizational_unit_id_on_delete", organizational_unit_id_on_delete)
         if path_id is not None:
-            pulumi.set(__self__, "path_id", path_id)
+            _setter("path_id", path_id)
         if provisioned_product_name is not None:
-            pulumi.set(__self__, "provisioned_product_name", provisioned_product_name)
+            _setter("provisioned_product_name", provisioned_product_name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -197,26 +234,67 @@ class _ControlTowerAwsAccountState:
         :param pulumi.Input['ControlTowerAwsAccountSsoArgs'] sso: Assigned SSO user settings.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Key-value map of resource tags for the account.
         """
+        _ControlTowerAwsAccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            close_account_on_delete=close_account_on_delete,
+            email=email,
+            name=name,
+            organizational_unit=organizational_unit,
+            organizational_unit_id_on_delete=organizational_unit_id_on_delete,
+            path_id=path_id,
+            provisioned_product_name=provisioned_product_name,
+            sso=sso,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             close_account_on_delete: Optional[pulumi.Input[bool]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             organizational_unit: Optional[pulumi.Input[str]] = None,
+             organizational_unit_id_on_delete: Optional[pulumi.Input[str]] = None,
+             path_id: Optional[pulumi.Input[str]] = None,
+             provisioned_product_name: Optional[pulumi.Input[str]] = None,
+             sso: Optional[pulumi.Input['ControlTowerAwsAccountSsoArgs']] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'closeAccountOnDelete' in kwargs:
+            close_account_on_delete = kwargs['closeAccountOnDelete']
+        if 'organizationalUnit' in kwargs:
+            organizational_unit = kwargs['organizationalUnit']
+        if 'organizationalUnitIdOnDelete' in kwargs:
+            organizational_unit_id_on_delete = kwargs['organizationalUnitIdOnDelete']
+        if 'pathId' in kwargs:
+            path_id = kwargs['pathId']
+        if 'provisionedProductName' in kwargs:
+            provisioned_product_name = kwargs['provisionedProductName']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if close_account_on_delete is not None:
-            pulumi.set(__self__, "close_account_on_delete", close_account_on_delete)
+            _setter("close_account_on_delete", close_account_on_delete)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if organizational_unit is not None:
-            pulumi.set(__self__, "organizational_unit", organizational_unit)
+            _setter("organizational_unit", organizational_unit)
         if organizational_unit_id_on_delete is not None:
-            pulumi.set(__self__, "organizational_unit_id_on_delete", organizational_unit_id_on_delete)
+            _setter("organizational_unit_id_on_delete", organizational_unit_id_on_delete)
         if path_id is not None:
-            pulumi.set(__self__, "path_id", path_id)
+            _setter("path_id", path_id)
         if provisioned_product_name is not None:
-            pulumi.set(__self__, "provisioned_product_name", provisioned_product_name)
+            _setter("provisioned_product_name", provisioned_product_name)
         if sso is not None:
-            pulumi.set(__self__, "sso", sso)
+            _setter("sso", sso)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="accountId")
@@ -392,6 +470,10 @@ class ControlTowerAwsAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ControlTowerAwsAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -426,6 +508,11 @@ class ControlTowerAwsAccount(pulumi.CustomResource):
             __props__.__dict__["organizational_unit_id_on_delete"] = organizational_unit_id_on_delete
             __props__.__dict__["path_id"] = path_id
             __props__.__dict__["provisioned_product_name"] = provisioned_product_name
+            if sso is not None and not isinstance(sso, ControlTowerAwsAccountSsoArgs):
+                sso = sso or {}
+                def _setter(key, value):
+                    sso[key] = value
+                ControlTowerAwsAccountSsoArgs._configure(_setter, **sso)
             if sso is None and not opts.urn:
                 raise TypeError("Missing required property 'sso'")
             __props__.__dict__["sso"] = sso

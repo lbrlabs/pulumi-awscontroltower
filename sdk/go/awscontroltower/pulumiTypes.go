@@ -7,8 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/lbrlabs/pulumi-awscontroltower/sdk/go/awscontroltower/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type ProviderAssumeRole struct {
 	DurationSeconds   *int              `pulumi:"durationSeconds"`
@@ -55,6 +59,12 @@ func (i ProviderAssumeRoleArgs) ToProviderAssumeRoleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRoleOutput)
 }
 
+func (i ProviderAssumeRoleArgs) ToOutput(ctx context.Context) pulumix.Output[ProviderAssumeRole] {
+	return pulumix.Output[ProviderAssumeRole]{
+		OutputState: i.ToProviderAssumeRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ProviderAssumeRoleArgs) ToProviderAssumeRolePtrOutput() ProviderAssumeRolePtrOutput {
 	return i.ToProviderAssumeRolePtrOutputWithContext(context.Background())
 }
@@ -96,6 +106,12 @@ func (i *providerAssumeRolePtrType) ToProviderAssumeRolePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRolePtrOutput)
 }
 
+func (i *providerAssumeRolePtrType) ToOutput(ctx context.Context) pulumix.Output[*ProviderAssumeRole] {
+	return pulumix.Output[*ProviderAssumeRole]{
+		OutputState: i.ToProviderAssumeRolePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProviderAssumeRoleOutput struct{ *pulumi.OutputState }
 
 func (ProviderAssumeRoleOutput) ElementType() reflect.Type {
@@ -118,6 +134,12 @@ func (o ProviderAssumeRoleOutput) ToProviderAssumeRolePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderAssumeRole) *ProviderAssumeRole {
 		return &v
 	}).(ProviderAssumeRolePtrOutput)
+}
+
+func (o ProviderAssumeRoleOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderAssumeRole] {
+	return pulumix.Output[ProviderAssumeRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProviderAssumeRoleOutput) DurationSeconds() pulumi.IntPtrOutput {
@@ -164,6 +186,12 @@ func (o ProviderAssumeRolePtrOutput) ToProviderAssumeRolePtrOutput() ProviderAss
 
 func (o ProviderAssumeRolePtrOutput) ToProviderAssumeRolePtrOutputWithContext(ctx context.Context) ProviderAssumeRolePtrOutput {
 	return o
+}
+
+func (o ProviderAssumeRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProviderAssumeRole] {
+	return pulumix.Output[*ProviderAssumeRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProviderAssumeRolePtrOutput) Elem() ProviderAssumeRoleOutput {
@@ -283,6 +311,12 @@ func (i ControlTowerAwsAccountSsoArgs) ToControlTowerAwsAccountSsoOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ControlTowerAwsAccountSsoOutput)
 }
 
+func (i ControlTowerAwsAccountSsoArgs) ToOutput(ctx context.Context) pulumix.Output[ControlTowerAwsAccountSso] {
+	return pulumix.Output[ControlTowerAwsAccountSso]{
+		OutputState: i.ToControlTowerAwsAccountSsoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ControlTowerAwsAccountSsoArgs) ToControlTowerAwsAccountSsoPtrOutput() ControlTowerAwsAccountSsoPtrOutput {
 	return i.ToControlTowerAwsAccountSsoPtrOutputWithContext(context.Background())
 }
@@ -324,6 +358,12 @@ func (i *controlTowerAwsAccountSsoPtrType) ToControlTowerAwsAccountSsoPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ControlTowerAwsAccountSsoPtrOutput)
 }
 
+func (i *controlTowerAwsAccountSsoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ControlTowerAwsAccountSso] {
+	return pulumix.Output[*ControlTowerAwsAccountSso]{
+		OutputState: i.ToControlTowerAwsAccountSsoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ControlTowerAwsAccountSsoOutput struct{ *pulumi.OutputState }
 
 func (ControlTowerAwsAccountSsoOutput) ElementType() reflect.Type {
@@ -346,6 +386,12 @@ func (o ControlTowerAwsAccountSsoOutput) ToControlTowerAwsAccountSsoPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlTowerAwsAccountSso) *ControlTowerAwsAccountSso {
 		return &v
 	}).(ControlTowerAwsAccountSsoPtrOutput)
+}
+
+func (o ControlTowerAwsAccountSsoOutput) ToOutput(ctx context.Context) pulumix.Output[ControlTowerAwsAccountSso] {
+	return pulumix.Output[ControlTowerAwsAccountSso]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ControlTowerAwsAccountSsoOutput) Email() pulumi.StringOutput {
@@ -372,6 +418,12 @@ func (o ControlTowerAwsAccountSsoPtrOutput) ToControlTowerAwsAccountSsoPtrOutput
 
 func (o ControlTowerAwsAccountSsoPtrOutput) ToControlTowerAwsAccountSsoPtrOutputWithContext(ctx context.Context) ControlTowerAwsAccountSsoPtrOutput {
 	return o
+}
+
+func (o ControlTowerAwsAccountSsoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ControlTowerAwsAccountSso] {
+	return pulumix.Output[*ControlTowerAwsAccountSso]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ControlTowerAwsAccountSsoPtrOutput) Elem() ControlTowerAwsAccountSsoOutput {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -25,22 +25,59 @@ class ProviderAssumeRoleArgs:
                  session_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transitive_tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        ProviderAssumeRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            duration_seconds=duration_seconds,
+            external_id=external_id,
+            policy=policy,
+            policy_arns=policy_arns,
+            role_arn=role_arn,
+            session_name=session_name,
+            tags=tags,
+            transitive_tag_keys=transitive_tag_keys,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             duration_seconds: Optional[pulumi.Input[int]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             policy_arns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             session_name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             transitive_tag_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'durationSeconds' in kwargs:
+            duration_seconds = kwargs['durationSeconds']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'policyArns' in kwargs:
+            policy_arns = kwargs['policyArns']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'sessionName' in kwargs:
+            session_name = kwargs['sessionName']
+        if 'transitiveTagKeys' in kwargs:
+            transitive_tag_keys = kwargs['transitiveTagKeys']
+
         if duration_seconds is not None:
-            pulumi.set(__self__, "duration_seconds", duration_seconds)
+            _setter("duration_seconds", duration_seconds)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if policy_arns is not None:
-            pulumi.set(__self__, "policy_arns", policy_arns)
+            _setter("policy_arns", policy_arns)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if session_name is not None:
-            pulumi.set(__self__, "session_name", session_name)
+            _setter("session_name", session_name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if transitive_tag_keys is not None:
-            pulumi.set(__self__, "transitive_tag_keys", transitive_tag_keys)
+            _setter("transitive_tag_keys", transitive_tag_keys)
 
     @property
     @pulumi.getter(name="durationSeconds")
@@ -121,9 +158,28 @@ class ControlTowerAwsAccountSsoArgs:
                  email: pulumi.Input[str],
                  first_name: pulumi.Input[str],
                  last_name: pulumi.Input[str]):
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "first_name", first_name)
-        pulumi.set(__self__, "last_name", last_name)
+        ControlTowerAwsAccountSsoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            first_name=first_name,
+            last_name=last_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: pulumi.Input[str],
+             first_name: pulumi.Input[str],
+             last_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstName' in kwargs:
+            first_name = kwargs['firstName']
+        if 'lastName' in kwargs:
+            last_name = kwargs['lastName']
+
+        _setter("email", email)
+        _setter("first_name", first_name)
+        _setter("last_name", last_name)
 
     @property
     @pulumi.getter

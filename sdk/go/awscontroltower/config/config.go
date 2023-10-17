@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/lbrlabs/pulumi-awscontroltower/sdk/go/awscontroltower/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // This is the AWS access key. It must be provided, but it can also be sourced from the `AWS_ACCESS_KEY_ID` environment
 // variable, or via a shared credentials file if `profile` is specified.

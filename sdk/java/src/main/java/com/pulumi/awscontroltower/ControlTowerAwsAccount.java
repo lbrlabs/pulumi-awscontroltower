@@ -23,7 +23,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * ID of the AWS account.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -38,7 +38,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * account will just be unenrolled from Control Tower.
      * 
      */
-    @Export(name="closeAccountOnDelete", type=Boolean.class, parameters={})
+    @Export(name="closeAccountOnDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> closeAccountOnDelete;
 
     /**
@@ -53,7 +53,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * Root email of the account.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -67,7 +67,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * Name of the account.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -81,7 +81,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * Name of the Organizational Unit under which the account resides.
      * 
      */
-    @Export(name="organizationalUnit", type=String.class, parameters={})
+    @Export(name="organizationalUnit", refs={String.class}, tree="[0]")
     private Output<String> organizationalUnit;
 
     /**
@@ -96,7 +96,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * provided, the account will not be moved.
      * 
      */
-    @Export(name="organizationalUnitIdOnDelete", type=String.class, parameters={})
+    @Export(name="organizationalUnitIdOnDelete", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> organizationalUnitIdOnDelete;
 
     /**
@@ -112,7 +112,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * the product has more than one path. To list the paths for a product, use ListLaunchPaths.
      * 
      */
-    @Export(name="pathId", type=String.class, parameters={})
+    @Export(name="pathId", refs={String.class}, tree="[0]")
     private Output<String> pathId;
 
     /**
@@ -127,7 +127,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * Name of the service catalog product that is provisioned. Defaults to a slugified version of the account name.
      * 
      */
-    @Export(name="provisionedProductName", type=String.class, parameters={})
+    @Export(name="provisionedProductName", refs={String.class}, tree="[0]")
     private Output<String> provisionedProductName;
 
     /**
@@ -141,7 +141,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * Assigned SSO user settings.
      * 
      */
-    @Export(name="sso", type=ControlTowerAwsAccountSso.class, parameters={})
+    @Export(name="sso", refs={ControlTowerAwsAccountSso.class}, tree="[0]")
     private Output<ControlTowerAwsAccountSso> sso;
 
     /**
@@ -155,7 +155,7 @@ public class ControlTowerAwsAccount extends com.pulumi.resources.CustomResource 
      * Key-value map of resource tags for the account.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, String.class})
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**

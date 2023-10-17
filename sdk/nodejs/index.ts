@@ -5,8 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./controlTowerAwsAccount";
-export * from "./provider";
+export { ControlTowerAwsAccountArgs, ControlTowerAwsAccountState } from "./controlTowerAwsAccount";
+export type ControlTowerAwsAccount = import("./controlTowerAwsAccount").ControlTowerAwsAccount;
+export const ControlTowerAwsAccount: typeof import("./controlTowerAwsAccount").ControlTowerAwsAccount = null as any;
+utilities.lazyLoad(exports, ["ControlTowerAwsAccount"], () => require("./controlTowerAwsAccount"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -16,9 +24,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { ControlTowerAwsAccount } from "./controlTowerAwsAccount";
 
 const _module = {
     version: utilities.getVersion(),
@@ -32,9 +37,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("awscontroltower", "index/controlTowerAwsAccount", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("awscontroltower", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
