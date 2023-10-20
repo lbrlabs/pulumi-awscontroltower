@@ -14,4 +14,6 @@ resources:
         firstName: "Lee"
         lastName: "Briggs"
         email: "lee@brig.gs"
+    options:
+      pluginDownloadUrl: "github://api.github.com/lbrlabs"
 
